@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="ms" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RK PRO - Automasi Social Media Marketing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .shimmer {
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      background-size: 200% 100%;
+      animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    
+    .card-glow {
+      transition: all 0.3s ease;
+    }
+    
+    .card-glow:hover {
+      box-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-arrow {
+      0%, 100% { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+      50% { 
+        opacity: 0.5;
+        transform: translateY(10px);
+      }
+    }
+    
+    .pulse-arrow {
+      animation: pulse-arrow 1.5s ease-in-out infinite;
+    }
+    
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+    
+    .popup-overlay {
+      backdrop-filter: blur(8px);
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+    
+    .popup-content {
+      animation: slideIn 0.4s ease-out;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body class="h-full overflow-auto">
+  <div id="app-wrapper" class="min-h-full w-full" style="background-color: #020617;"><!-- Animated Popup Announcement -->
+   <div id="announcement-popup" class="hidden fixed inset-0 z-[100] flex items-center justify-center popup-overlay bg-black/70 px-4">
+    <div class="popup-content relative max-w-2xl w-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-2 border-amber-500/50 rounded-3xl p-4 sm:p-8 shadow-2xl shadow-amber-500/30 max-h-[90vh] overflow-y-auto"><!-- Close Button --> <button onclick="document.getElementById('announcement-popup').classList.add('hidden')" class="absolute top-3 right-3 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-slate-700/50 hover:bg-slate-600 rounded-full text-white transition-colors duration-200 text-lg"> ✕ </button> <!-- Content -->
+     <div class="text-center">
+      <div class="mb-4 sm:mb-6"><span class="inline-block px-3 py-1 sm:px-4 sm:py-2 bg-amber-500/20 border border-amber-500/40 rounded-full text-amber-400 font-bold text-xs sm:text-sm mb-4"> 🔥 PENGUMUMAN PENTING </span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 sm:mb-4">Selamat Datang Ke <span class="gradient-text">RK PRO</span></h2>
+      <p class="text-base sm:text-lg text-slate-300 mb-4 sm:mb-6">Ada Berita Baik!!</p>
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6">
+       <p class="text-blue-300 text-sm sm:text-base font-medium mb-2 sm:mb-3">🎯 <span class="font-bold">Khas untuk peniaga online</span></p>
+       <p class="text-slate-300 text-xs sm:text-sm mb-3 sm:mb-4">Admin akan buat panduan bagaimana bina website + sistem payment yang padu! 💪</p>
+       <p class="text-amber-300 text-sm sm:text-base font-bold mb-3 sm:mb-4">🔔 Jangan lepaskan peluang ini!</p><a href="https://chat.whatsapp.com/ImidSJPbHjuKruXmC2dg3j" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2 sm:px-8 sm:py-3 bg-gradient-to-r from-green-500 to-green-600 rounded-xl text-white text-sm sm:text-base font-bold shadow-lg hover:shadow-green-500/50 transition-all duration-300 hover:scale-105"> Tak sabarnye!! Saya masuk group dulu!! Da.. Daa!! 🎉 </a>
+      </div><button onclick="document.getElementById('announcement-popup').classList.add('hidden')" class="px-6 py-2 sm:px-8 sm:py-3 bg-slate-700 hover:bg-slate-600 rounded-xl text-white text-sm sm:text-base font-semibold transition-colors duration-200"> Tutup &amp; Teruskan </button>
+     </div>
+    </div>
+   </div><!-- Hero Section -->
+   <section class="relative min-h-screen flex items-center justify-center px-4 py-16 sm:py-20 overflow-hidden"><!-- Background Effects -->
+    <div class="absolute inset-0 bg-gradient-to-b from-amber-500/5 via-transparent to-transparent"></div>
+    <div class="absolute top-20 left-10 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+     <div class="mb-4 sm:mb-6"><span class="inline-block px-3 py-1 sm:px-4 sm:py-2 bg-amber-500/20 border border-amber-500/40 rounded-full text-amber-400 font-bold text-sm sm:text-base"> 🔥 AUTOMASI SOCIAL MEDIA MARKETING </span>
+     </div>
+     <h1 id="main-headline" class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-6 sm:mb-8 leading-tight px-2">Relaks Je, <span class="gradient-text">Robot Kan Ada</span></h1>
+     <p id="subheadline" class="text-2xl sm:text-3xl md:text-3xl text-slate-300 mb-10 sm:mb-12 max-w-3xl mx-auto px-4">Automasi sosmed paling senang. Klik-klik, siap!</p>
+     <div class="mb-8 sm:mb-12"><img src="https://i.postimg.cc/L4w29B1V/CANVA-RK-PRO-(1).png" alt="RK PRO Dashboard" loading="lazy" class="mx-auto w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl h-auto px-4" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #1e293b 0%, #334155 100%)'; this.alt='Image unavailable';">
+      <p class="text-slate-400 text-sm sm:text-base mt-3 sm:mt-4 italic text-center font-medium px-4">Hanya untuk PC/LAPTOP sahaja.</p>
+     </div>
+     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-slate-400 text-sm sm:text-base">
+      <div class="flex items-center gap-2"><span class="text-green-400 text-xl sm:text-2xl">✓</span> <span>Setup Senang</span>
+      </div>
+      <div class="flex items-center gap-2"><span class="text-green-400 text-xl sm:text-2xl">✓</span> <span>Support 24/7</span>
+      </div>
+      <div class="flex items-center gap-2"><span class="text-green-400 text-xl sm:text-2xl">✓</span> <span>Update Percuma</span>
+      </div>
+     </div>
+    </div>
+   </section><!-- Problem Section -->
+   <section class="py-12 sm:py-20 px-4 relative">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-10 sm:mb-16">
+      <h2 class="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-3 sm:mb-4 px-2">Penat Dengan Kerja <span class="text-red-500">Manual</span> Macam Ni?</h2>
+      <p class="text-lg sm:text-xl text-slate-400 mb-4 sm:mb-6 px-4">Masalah yang ramai hadapi setiap hari...</p><!-- Emotional Pain Statement -->
+      <div class="max-w-4xl mx-auto mt-6 sm:mt-8 p-4 sm:p-6 bg-red-900/20 border-2 border-red-500/40 rounded-2xl">
+       <p class="text-base sm:text-lg md:text-xl text-red-200 leading-relaxed font-medium">"Setiap minit yang anda bazirkan untuk scroll dan follow manual adalah minit yang sepatutnya anda guna untuk <span class="text-red-400 font-bold">fikir strategi besar</span> atau <span class="text-red-400 font-bold">bersama keluarga</span>. <span class="text-white font-black">Anda bukan robot, jadi jangan buat kerja robot!</span>"</p>
+      </div>
+     </div>
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      <div class="p-4 sm:p-6 bg-slate-900/50 border border-red-900/50 rounded-2xl hover:border-red-500/50 transition-all duration-300">
+       <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">
+        😩
+       </div>
+       <h3 class="text-base sm:text-xl font-bold text-white mb-2 sm:mb-3">Like &amp; Comment = <span class="text-red-400">Ketinggalan</span></h3>
+       <p class="text-sm sm:text-base text-slate-400">Kena engage dengan ramai orang untuk visibility. Tangan pun dah kebas! <span class="text-red-300 font-semibold">Masih copy-paste mesej satu-satu sampai jari lenguh? Pesaing anda dah lama guna robot, sebab itu mereka lebih laju!</span></p>
+      </div>
+      <div class="p-4 sm:p-6 bg-slate-900/50 border border-red-900/50 rounded-2xl hover:border-red-500/50 transition-all duration-300">
+       <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">
+        😫
+       </div>
+       <h3 class="text-base sm:text-xl font-bold text-white mb-2 sm:mb-3">Extract Database Lambat = <span class="text-red-400">Stagnant</span></h3>
+       <p class="text-sm sm:text-base text-slate-400">Nak collect database prospek ambik masa berjam-jam untuk satu platform je! <span class="text-red-300 font-semibold">Database bersepah? Leads tak terlayan? Jangan biarkan duit 'melayang' hanya sebab anda tak cukup tangan.</span></p>
+      </div>
+      <div class="p-4 sm:p-6 bg-slate-900/50 border border-red-900/50 rounded-2xl hover:border-red-500/50 transition-all duration-300">
+       <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">
+        😖
+       </div>
+       <h3 class="text-base sm:text-xl font-bold text-white mb-2 sm:mb-3">Blast Message Manual = <span class="text-red-400">Kos Melepas</span></h3>
+       <p class="text-sm sm:text-base text-slate-400">Hantar message dekat ramai orang? Kena copy paste berpuluh kali. Gila penat! <span class="text-red-300 font-semibold">Berapa prospek yang dah hilang sebab terlambat follow up?</span></p>
+      </div>
+      <div class="p-4 sm:p-6 bg-slate-900/50 border border-red-900/50 rounded-2xl hover:border-red-500/50 transition-all duration-300">
+       <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">
+        😓
+       </div>
+       <h3 class="text-base sm:text-xl font-bold text-white mb-2 sm:mb-3">Tak Cukup Masa = <span class="text-red-400">Burnout Total</span></h3>
+       <p class="text-sm sm:text-base text-slate-400">Masa nak post content pun dah habis sebab sibuk buat kerja manual! <span class="text-red-300 font-semibold">Work-life balance? Lupa dah macam mana rasanya.</span></p>
+      </div>
+      <div class="p-4 sm:p-6 bg-slate-900/50 border border-red-900/50 rounded-2xl hover:border-red-500/50 transition-all duration-300">
+       <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">
+        💸
+       </div>
+       <h3 class="text-base sm:text-xl font-bold text-white mb-2 sm:mb-3">Kos Admin Mahal = <span class="text-red-400">Rugi Besar</span></h3>
+       <p class="text-sm sm:text-base text-slate-400">Nak upah admin untuk handle semua ni? Kos bulanan boleh cecah RM1,000++! <span class="text-red-300 font-semibold">Duit tu boleh guna untuk scale bisnes atau simpan untuk family.</span></p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Solution Section -->
+   <section class="py-20 px-4 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-amber-500/5 to-transparent"></div>
+    <div class="max-w-6xl mx-auto relative z-10">
+     <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-black text-white mb-4">Selesaikan Semua Dengan <span class="gradient-text">RK PRO</span></h2>
+      <p class="text-xl text-slate-400">Automasi penuh untuk semua platform sosial media anda</p>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-10 sm:mb-16">
+      <div class="p-8 bg-gradient-to-br from-green-500/10 to-transparent border border-green-500/30 rounded-3xl">
+       <div class="text-5xl mb-4">
+        🤖
+       </div>
+       <h3 class="text-2xl font-black text-white mb-4">Automasi 100%</h3>
+       <p class="text-slate-300 mb-4">Follow, unfollow, like, comment, extract database - semua jalan auto tanpa perlu anda duduk depan PC 24/7!</p>
+       <ul class="space-y-2 text-slate-300">
+        <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span> <span>Set sekali, biar dia kerja sendiri</span></li>
+        <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span> <span>Jimat masa 90% berbanding manual</span></li>
+        <li class="flex items-start gap-2"><span class="text-green-400 mt-1">✓</span> <span>Kerja sambil tidur pun boleh!</span></li>
+       </ul>
+      </div>
+      <div class="p-8 bg-gradient-to-br from-blue-500/10 to-transparent border border-blue-500/30 rounded-3xl">
+       <div class="text-5xl mb-4">
+        🎯
+       </div>
+       <h3 class="text-2xl font-black text-white mb-4">Multi-Platform Support</h3>
+       <p class="text-slate-300 mb-4">Satu tool untuk semua! TikTok, Instagram, Threads, WhatsApp - semuanya dalam satu dashboard.</p>
+       <ul class="space-y-2 text-slate-300">
+        <li class="flex items-start gap-2"><span class="text-blue-400 mt-1">✓</span> <span>Tak payah beli tool berlainan</span></li>
+        <li class="flex items-start gap-2"><span class="text-blue-400 mt-1">✓</span> <span>Interface senang dan mesra pengguna</span></li>
+        <li class="flex items-start gap-2"><span class="text-blue-400 mt-1">✓</span> <span>Update features secara berkala</span></li>
+       </ul>
+      </div>
+     </div>
+     <div class="text-center p-8 bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-amber-500/10 border border-amber-500/30 rounded-3xl">
+      <h3 class="text-2xl md:text-3xl font-black text-white mb-4">Bayangkan: <span class="gradient-text">4 Jam Kerja Manual = 10 Minit Dengan RK PRO</span></h3>
+      <p class="text-xl text-slate-300">Itulah kuasa automasi yang betul!</p>
+     </div>
+    </div>
+   </section><!-- Products Section -->
+   <section class="py-20 px-4 relative">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-black text-white mb-4">4 Senjata <span class="gradient-text">Power</span> Dalam RK PRO</h2>
+      <p class="text-xl text-slate-400">Setiap satu direka khas untuk platform yang berbeza</p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-6 sm:gap-8"><!-- RK TT PRO -->
+      <div class="group relative p-6 sm:p-8 bg-slate-900/80 border border-slate-700 rounded-3xl card-glow hover:border-pink-500/50 transition-all duration-500">
+       <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-500/20 to-transparent rounded-full blur-2xl"></div>
+       <div class="relative z-10">
+        <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+         <div class="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl shadow-lg shadow-pink-500/30">
+          <svg viewbox="0 0 24 24" class="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+          </svg>
+         </div>
+         <div>
+          <h3 class="text-xl sm:text-2xl font-black text-white">RK TT PRO</h3>
+          <p class="text-pink-400 font-medium text-sm sm:text-base">TikTok Automation</p>
+         </div>
+        </div>
+        <p class="text-slate-300 mb-4 sm:mb-6 text-sm sm:text-base">Bukan sekadar auto-follow, tapi magnet follower berkualiti tinggi yang betul-betul berminat dengan produk anda!</p>
+        <ul class="space-y-2 sm:space-y-3">
+         <li class="flex items-center gap-3 text-slate-300"><span class="w-6 h-6 flex items-center justify-center bg-pink-500/20 rounded-full text-pink-400 text-sm">✓</span> <span><strong class="text-white">Auto Follow/Unfollow:</strong> Bina followers organik dengan pantas</span></li>
+         <li class="flex items-center gap-3 text-slate-300"><span class="w-6 h-6 flex items-center justify-center bg-pink-500/20 rounded-full text-pink-400 text-sm">✓</span> <span><strong class="text-white">Auto Like:</strong> Boost engagement dan visibility content <span class="text-green-400 font-bold text-sm">(AKAN DATANG)</span></span></li>
+         <li class="flex items-center gap-3 text-slate-300"><span class="w-6 h-6 flex items-center justify-center bg-pink-500/20 rounded-full text-pink-400 text-sm">✓</span> <span><strong class="text-white">Auto Comment:</strong> Engage dengan niche market anda <span class="text-green-400 font-bold text-sm">(AKAN DATANG)</span></span></li>
+         <li class="flex items-center gap-3 text-slate-300"><span class="w-6 h-6 flex items-center justify-center bg-pink-500/20 rounded-full text-pink-400 text-sm">✓</span> <span><strong class="text-white">Auto Extract:</strong> Kumpul database user yang aktif</span></li>
+        </ul>
+       </div>
+      </div><!-- RK IG PRO -->
+      <div class="group relative p-6 sm:p-8 bg-slate-900/80 border border-slate-700 rounded-3xl card-glow hover:border-purple-500/50 transition-all duration-500">
+       <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/20 to-transparent rounded-full blur-2xl"></div>
+       <div class="relative z-10">
+        <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+         <div class="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 rounded-2xl shadow-lg shadow-purple-500/30">
+          <svg viewbox="0 0 24 24" class="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+         </div>
+         <div>
+          <h3 class="text-xl sm:text-2xl font-black text-white">RK IG PRO</h3>
+          <p class="text-purple-400 font-medium text-sm sm:text-base">Instagram Automation</p>
+         </div>
+        </div>
+        <p class="text-slate-300 mb-4 sm:mb-6 text-sm sm:text-base">Jaga imej akaun anda supaya sentiasa nampak aktif dan profesional di mata pelanggan, tanpa perlu anda sentuh telefon pun!</p>
+        <ul class="space-y-3">
+         <li class="flex items-center gap-3 text-slate-300"><span class="w-6 h-6 flex items-center justify-center bg-purple-500/20 rounded-full text-purple-400 text-sm">✓</span> <span><strong class="text-white">Auto Follow/Unfollow:</strong> Target followers yang sesuai dengan niche</span></li>
+         <li class="flex items-center gap-3 text-slate-300"><span class="w-6 h-6 flex items-center justify-center bg-purple-500/20 rounded-full text-purple-400 text-sm">✓</span> <span><strong class="text-white">Auto Like:</strong> Tingkatkan reach dan impressions <span class="text-green-400 font-bold text-sm">(AKAN DATANG)</span></span></li>
+         <li class="flex items-center gap-3 text-slate-300"><span class="w-6 h-6 flex items-center justify-center bg-purple-500/20 rounded-full text-purple-400 text-sm">✓</span> <span><strong class="text-white">Auto Comment:</strong> Bina relationship dengan audiens <span class="text-green-400 font-bold text-sm">(AKAN DATANG)</span></span></li>
+         <li class="flex items-center gap-3 text-slate-300"><span class="w-6 h-6 flex items-center justify-center bg-purple-500/20 rounded-full text-purple-400 text-sm">✓</span> <span><strong class="text-white">Auto DM:</strong> Hantar mesej terus ke inbox prospek <span class="text-green-400 font-bold text-sm">(AKAN DATANG)</span></span></li>
+         <li class="flex items-center gap-3 text-slate-300"><span class="w-6 h-6 flex items-center justify-center bg-purple-500/20 rounded-full text-purple-400 text-sm">✓</span> <span><strong class="text-white">Auto Extract:</strong> Kumpul database user yang aktif</span></li>
+        </ul>
+       </div>
+      </div><!-- RK TR PRO -->
+      <div class="group relative p-6 sm:p-8 bg-slate-900/80 border border-slate-700 rounded-3xl card-glow hover:border-slate-500/50 transition-all duration-500">
+       <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-slate-500/20 to-transparent rounded-full blur-2xl"></div>
+       <div class="relative z-10">
+        <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+         <div class="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center bg-gradient-to-br from-slate-700 to-slate-900 rounded-2xl shadow-lg shadow-slate-500/30 overflow-hidden"><img src="https://i.postimg.cc/RVvqfxdQ/1-(2).png" alt="Threads Logo" loading="lazy" class="w-11 h-11 sm:w-14 sm:h-14 brightness-0 invert" onerror="console.error('Image failed to load:', this.src); this.style.display='none';">
+         </div>
+         <div>
+          <h3 class="text-xl sm:text-2xl font-black text-white">RK TR PRO</h3>
+          <p class="text-slate-300 font-medium text-sm sm:text-base">Threads Automation</p>
+         </div>
+        </div>
+        <p class="text-slate-300 mb-4 sm:mb-6 text-sm sm:text-base">Jadi antara yang terawal dominasi Threads. Sedut audiens dari niche yang sama dan bina pengaruh anda sekarang!</p>
+        <ul class="space-y-3">
+         <li class="flex items-center gap-3 text-slate-300"><span class="w-6 h-6 flex items-center justify-center bg-slate-500/20 rounded-full text-slate-400 text-sm">✓</span> <span><strong class="text-white">Auto Follow/Unfollow:</strong> Bina komuniti di Threads dengan pantas</span></li>
+         <li class="flex items-center gap-3 text-slate-300"><span class="w-6 h-6 flex items-center justify-center bg-slate-500/20 rounded-full text-slate-400 text-sm">✓</span> <span><strong class="text-white">Auto Extract:</strong> Kumpul database pengguna aktif dalam niche anda</span></li>
+        </ul>
+       </div>
+      </div><!-- RK WS PRO -->
+      <div class="group relative p-6 sm:p-8 bg-slate-900/80 border border-slate-700 rounded-3xl card-glow hover:border-green-500/50 transition-all duration-500">
+       <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-500/20 to-transparent rounded-full blur-2xl"></div>
+       <div class="relative z-10">
+        <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+         <div class="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center bg-gradient-to-br from-green-500 to-green-600 rounded-2xl text-white text-2xl sm:text-3xl shadow-lg shadow-green-500/30">
+          <svg viewbox="0 0 24 24" class="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+         </div>
+         <div>
+          <h3 class="text-xl sm:text-2xl font-black text-white">RK WS PRO</h3>
+          <p class="text-green-400 font-medium text-sm sm:text-base">WhatsApp Marketing</p>
+         </div>
+        </div>
+        <p class="text-slate-300 mb-4 sm:mb-6 text-sm sm:text-base">Senjata 'Blast' paling berkuasa. Hantar mesej promosi terus ke poket prospek tanpa risiko ban yang tinggi!</p>
+        <ul class="space-y-3 mb-6">
+         <li class="flex items-center gap-3 text-slate-300"><span class="w-6 h-6 flex items-center justify-center bg-green-500/20 rounded-full text-green-400 text-sm">✓</span> <span><strong class="text-white">Auto Extract Number:</strong> Kumpul nombor telefon prospek dengan pantas</span></li>
+         <li class="flex items-center gap-3 text-slate-300"><span class="w-6 h-6 flex items-center justify-center bg-green-500/20 rounded-full text-green-400 text-sm">✓</span> <span><strong class="text-white">Auto Send/Blast:</strong> Hantar mesej pukal terus ke WhatsApp prospek</span></li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Demo Button Section -->
+   <section class="py-12 sm:py-20 px-4 relative">
+    <div class="max-w-5xl mx-auto">
+     <div class="text-center mb-8 sm:mb-12">
+      <h2 class="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-4 sm:mb-6 leading-tight px-2">Kita Minum Kopi Dulu, <span class="gradient-text">Biar Dia Buat Kerja...</span> ☕</h2>
+      <p class="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed px-4">Penat sebenarnya kalau hari-hari nak kena hadap skrin, tekan benda yang sama berulang-ulang kali. <span class="text-amber-400 font-semibold">Sebab tu saya setup tool ni.</span></p>
+      <p class="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mt-4 px-4"><span class="text-green-400 font-bold">Laju je dia buat kerja</span>. Tak ada istilah penat atau mengantuk. Kita boleh fokus buat closing atau layan anak bini, <span class="text-amber-400 font-semibold">yang ni biar dia settle kan sampai habis.</span></p>
+     </div><!-- Instagram Demo -->
+     <div class="relative max-w-4xl mx-auto mb-12">
+      <div class="relative overflow-hidden rounded-3xl shadow-2xl shadow-purple-500/20 border-2 border-slate-800 hover:border-purple-500/50 transition-all duration-300 bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 p-8 sm:p-12">
+       <div class="text-center">
+        <div class="mb-6">
+         <div class="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 rounded-full shadow-lg shadow-purple-500/50 mb-4">
+          <svg viewbox="0 0 24 24" class="w-12 h-12 sm:w-14 sm:h-14 text-white" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+         </div>
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-black text-white mb-4">Tengok Video Demo <span class="text-purple-400">Fungsi RK IG Pro (Instagram)</span></h3>
+        <p class="text-slate-300 text-base sm:text-lg mb-8 max-w-2xl mx-auto">Klik butang di bawah untuk tengok video demo bagaimana RK IG PRO boleh berfungsi secara automatik dalam masa yang singkat! <span class="text-amber-400 font-semibold">Fungsi RK TR Pro dan RK TT Pro adalah sama seperti yang ditunjukkan dalam video demo ini.</span></p>
+        <div class="flex flex-col sm:flex-row gap-4 items-center justify-center"><a href="https://youtu.be/L8aQViIJiiQ" target="_blank" rel="noopener noreferrer" class="group inline-block w-full sm:w-auto"> <button class="relative w-full px-8 py-4 sm:px-12 sm:py-5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-500 rounded-2xl text-white font-black text-lg sm:text-xl shadow-2xl shadow-blue-500/50 hover:shadow-blue-500/70 transition-all duration-300 hover:scale-105"> <span class="relative z-10 flex items-center justify-center gap-3">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+            </svg> AUTO FOLLOW </span>
+           <div class="absolute inset-0 rounded-2xl shimmer"></div></button> </a> <a href="https://youtu.be/5mxDa037IjI" target="_blank" rel="noopener noreferrer" class="group inline-block w-full sm:w-auto"> <button class="relative w-full px-8 py-4 sm:px-12 sm:py-5 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 rounded-2xl text-white font-black text-lg sm:text-xl shadow-2xl shadow-purple-500/50 hover:shadow-purple-500/70 transition-all duration-300 hover:scale-105"> <span class="relative z-10 flex items-center justify-center gap-3">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg> EXTRACT FOLLOWERS </span>
+           <div class="absolute inset-0 rounded-2xl shimmer"></div></button> </a> <a href="https://youtu.be/-ZHlyBLcwas" target="_blank" rel="noopener noreferrer" class="group inline-block w-full sm:w-auto"> <button class="relative w-full px-8 py-4 sm:px-12 sm:py-5 bg-gradient-to-r from-red-600 via-rose-600 to-pink-500 rounded-2xl text-white font-black text-lg sm:text-xl shadow-2xl shadow-red-500/50 hover:shadow-red-500/70 transition-all duration-300 hover:scale-105"> <span class="relative z-10 flex items-center justify-center gap-3">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7a4 4 0 11-8 0 4 4 0 018 0zM9 14a6 6 0 00-6 6v1h12v-1a6 6 0 00-6-6zM21 12h-6" />
+            </svg> AUTO UNFOLLOW </span>
+           <div class="absolute inset-0 rounded-2xl shimmer"></div></button> </a>
+        </div>
+        <p class="text-slate-400 text-sm mt-6 italic">💡 Klik untuk tengok video demo lengkap</p>
+       </div>
+      </div>
+     </div><!-- WhatsApp Demo -->
+     <div class="relative max-w-4xl mx-auto">
+      <div class="relative overflow-hidden rounded-3xl shadow-2xl shadow-green-500/20 border-2 border-slate-800 hover:border-green-500/50 transition-all duration-300 bg-gradient-to-br from-slate-900 via-green-900/20 to-slate-900 p-8 sm:p-12">
+       <div class="text-center">
+        <div class="mb-6">
+         <div class="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-green-500 to-green-600 rounded-full shadow-lg shadow-green-500/50 mb-4">
+          <svg viewbox="0 0 24 24" class="w-12 h-12 sm:w-14 sm:h-14 text-white" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+         </div>
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-black text-white mb-4">Tengok Video Demo <span class="text-green-400">Fungsi RK WS Pro (WhatsApp)</span></h3>
+        <p class="text-slate-300 text-base sm:text-lg mb-8 max-w-2xl mx-auto">Klik butang di bawah untuk tengok video demo bagaimana RK WS PRO boleh berfungsi secara automatik dalam masa yang singkat!</p>
+        <div class="flex flex-col sm:flex-row gap-4 items-center justify-center"><a href="https://youtu.be/qAfIUdK2i_0" target="_blank" rel="noopener noreferrer" class="group inline-block w-full sm:w-auto"> <button class="relative w-full px-8 py-4 sm:px-12 sm:py-5 bg-gradient-to-r from-green-600 via-emerald-600 to-teal-500 rounded-2xl text-white font-black text-lg sm:text-xl shadow-2xl shadow-green-500/50 hover:shadow-green-500/70 transition-all duration-300 hover:scale-105"> <span class="relative z-10 flex items-center justify-center gap-3">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+            </svg> EXTRACT NUMBER </span>
+           <div class="absolute inset-0 rounded-2xl shimmer"></div></button> </a> <a href="https://youtu.be/JiYyqmTcH1w" target="_blank" rel="noopener noreferrer" class="group inline-block w-full sm:w-auto"> <button class="relative w-full px-8 py-4 sm:px-12 sm:py-5 bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-500 rounded-2xl text-white font-black text-lg sm:text-xl shadow-2xl shadow-blue-500/50 hover:shadow-blue-500/70 transition-all duration-300 hover:scale-105"> <span class="relative z-10 flex items-center justify-center gap-3">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+            </svg> AUTO SEND/BLAST </span>
+           <div class="absolute inset-0 rounded-2xl shimmer"></div></button> </a>
+        </div>
+        <p class="text-slate-400 text-sm mt-6 italic">💡 Klik untuk tengok video demo lengkap</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Testimonials Section -->
+   <section class="py-20 px-4 relative">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-black text-white mb-4">Testimoni Pengguna <span class="gradient-text">(Bukti Mantap)</span></h2>
+      <p class="text-xl text-slate-400">Lihat sendiri hasil yang diorang dah capai!</p>
+     </div>
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"><!-- Testimonial 1 -->
+      <div class="p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300">
+       <div class="flex items-center gap-1 mb-4"><span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span>
+       </div>
+       <p class="text-slate-300 mb-4 italic">"Dulu nak dapat 100 followers kat TikTok punyalah seksa. Sejak guna RK TT Pro, akaun saya naik 1k followers dalam masa seminggu je secara organik! Memang padu!"</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex items-center justify-center text-white font-bold">
+         Z
+        </div>
+        <div>
+         <p class="text-white font-bold text-sm">Zaki</p>
+         <p class="text-slate-500 text-xs">Dropshipper Gadget</p>
+        </div>
+       </div>
+      </div><!-- Testimonial 2 -->
+      <div class="p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300">
+       <div class="flex items-center gap-1 mb-4"><span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span>
+       </div>
+       <p class="text-slate-300 mb-4 italic">"Database WhatsApp saya sekarang dah ada 5,000 nombor hasil Auto Extract. Nak hantar mesej promosi pun sekejap je guna RK WS Pro. Sales naik 300%!"</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-white font-bold">
+         R
+        </div>
+        <div>
+         <p class="text-white font-bold text-sm">Kak Rose</p>
+         <p class="text-slate-500 text-xs">Founder Produk Kecantikan</p>
+        </div>
+       </div>
+      </div><!-- Testimonial 3 -->
+      <div class="p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300">
+       <div class="flex items-center gap-1 mb-4"><span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">  </span>
+       </div>
+       <p class="text-slate-300 mb-4 italic">"Paling best pasal RK PRO ni sebab ada group support. Video tutorial dia pun sangat jelas. Sekali tengok terus pandai buat sendiri."</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+         A
+        </div>
+        <div>
+         <p class="text-white font-bold text-sm">Amirul</p>
+         <p class="text-slate-500 text-xs">Affiliate Marketer</p>
+        </div>
+       </div>
+      </div><!-- Testimonial 4 -->
+      <div class="p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300">
+       <div class="flex items-center gap-1 mb-4"><span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span>
+       </div>
+       <p class="text-slate-300 mb-4 italic">"Dah tak payah upah admin RM1,200 sebulan. Pakai tool RK IG Pro ni dah cukup untuk buat kerja-kerja rutin saya. Jimat gila kos!"</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
+         S
+        </div>
+        <div>
+         <p class="text-white font-bold text-sm">Siti</p>
+         <p class="text-slate-500 text-xs">Owner Butiq Online</p>
+        </div>
+       </div>
+      </div><!-- Testimonial 5 -->
+      <div class="p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300">
+       <div class="flex items-center gap-1 mb-4"><span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span>
+       </div>
+       <p class="text-slate-300 mb-4 italic">"Threads tengah trending, jadi saya guna RK TR Pro untuk tarik audiens awal. Memang senang nak bina authority kat sana guna sistem auto follow ni."</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-slate-600 to-slate-800 rounded-full flex items-center justify-center text-white font-bold">
+         F
+        </div>
+        <div>
+         <p class="text-white font-bold text-sm">Farhan</p>
+         <p class="text-slate-500 text-xs">Content Creator</p>
+        </div>
+       </div>
+      </div><!-- Testimonial 6 -->
+      <div class="p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300">
+       <div class="flex items-center gap-1 mb-4"><span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span> <span class="text-amber-400 text-xl">⭐</span>
+       </div>
+       <p class="text-slate-300 mb-4 italic">"Saya benci bab extract database ni sebab remeh. Tapi dengan RK PRO, klik-klik terus siap. Kerja 3 jam jadi 5 minit je!"</p>
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center text-white font-bold">
+         H
+        </div>
+        <div>
+         <p class="text-white font-bold text-sm">Hidayah</p>
+         <p class="text-slate-500 text-xs">Agen Coway</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Support Section -->
+   <section class="py-20 px-4 relative">
+    <div class="max-w-4xl mx-auto">
+     <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-5xl font-black text-white mb-4">"Saya Tak Pandai IT, <span class="text-blue-400">Macam Mana Nak Guna?</span>"</h2>
+      <p class="text-xl text-slate-400">Tenang... Kami tak akan biarkan anda terkontang-kanting.</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-6">
+      <div class="p-6 bg-slate-900/50 border border-slate-800 rounded-2xl text-center hover:border-blue-500/50 transition-all duration-300">
+       <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-500/10 rounded-2xl text-4xl">
+        🎬
+       </div>
+       <h3 class="text-xl font-bold text-white mb-2">Video Tutorial Lengkap</h3>
+       <p class="text-slate-400">Tak tahu teknikal? Jangan risau. Kami sediakan video tutorial dari A-Z yang sangat mudah difahami, walaupun anda bukan 'orang IT'.</p>
+      </div>
+      <div class="p-6 bg-slate-900/50 border border-slate-800 rounded-2xl text-center hover:border-blue-500/50 transition-all duration-300">
+       <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-500/10 rounded-2xl text-4xl">
+        👥
+       </div>
+       <h3 class="text-xl font-bold text-white mb-2">Group Support Eksklusif</h3>
+       <p class="text-slate-400">Anda tidak keseorangan. Sertai komuniti usahawan dalam Group Support Eksklusif kami untuk bertukar tips dan strategi terkini.</p>
+      </div>
+      <div class="p-6 bg-slate-900/50 border border-slate-800 rounded-2xl text-center hover:border-blue-500/50 transition-all duration-300">
+       <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-500/10 rounded-2xl text-4xl">
+        🔄
+       </div>
+       <h3 class="text-xl font-bold text-white mb-2">Sesi Live Admin</h3>
+       <p class="text-slate-400">Sistem sentiasa dikemaskini. Admin kami sentiasa pastikan robot anda 'sihat' dan selari dengan algorithm media sosial terbaru.</p>
+       <p class="text-slate-500 text-sm mt-3 italic">*Bergantung kepada kelapangan masa admin</p>
+      </div>
+     </div><!-- Admin Update Notice -->
+     <div class="mt-10 p-5 bg-amber-500/10 border border-amber-500/30 rounded-xl text-center max-w-2xl mx-auto">
+      <p class="text-amber-300 text-base font-medium">⚠️ <span class="font-bold">Pihak admin akan mengemaskini sekiranya terdapat sebarang perubahan.</span></p>
+     </div>
+    </div>
+   </section><!-- Floating WhatsApp Button --> <a href="https://chat.whatsapp.com/ImidSJPbHjuKruXmC2dg3j" target="_blank" rel="noopener noreferrer" class="fixed left-4 sm:left-6 bottom-4 sm:bottom-6 z-50 group">
+    <div class="relative"><!-- Ping Animation --> <span class="absolute inset-0 w-14 h-14 sm:w-16 sm:h-16 bg-green-500 rounded-full opacity-75 animate-ping"></span> <!-- WhatsApp Button -->
+     <div class="relative w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/50 hover:scale-110 transition-transform duration-300">
+      <svg viewbox="0 0 24 24" class="w-8 h-8 sm:w-9 sm:h-9 text-white" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg>
+     </div><!-- Tooltip - Hidden on mobile -->
+     <div class="hidden sm:block absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-slate-900 text-white px-4 py-2 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-xl border border-slate-700"><span class="text-sm font-semibold">💬 Chat Dengan Kami</span>
+      <div class="absolute right-full top-1/2 -translate-y-1/2 border-8 border-transparent border-r-slate-900"></div>
+     </div>
+    </div></a> <!-- FAQ Section -->
+   <section class="py-20 px-4 relative">
+    <div class="max-w-5xl mx-auto">
+     <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-black text-white mb-4">💡 Soalan Lazim <span class="gradient-text">(FAQ)</span></h2>
+      <p class="text-xl text-slate-400">Soalan yang selalu ditanya... Jawapan yang anda perlukan!</p>
+     </div>
+     <div class="space-y-4"><!-- FAQ 1 -->
+      <div class="faq-item p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300"><button class="faq-question w-full flex items-start justify-between gap-4 text-left" onclick="this.parentElement.classList.toggle('active')"> <span class="text-lg font-bold text-white flex-1">1. Apa benda sebenarnya Ekosistem RK PRO ni?</span>
+        <svg class="faq-icon w-6 h-6 text-amber-400 flex-shrink-0 transform transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg></button>
+       <div class="faq-answer mt-4 text-slate-300 hidden">
+        Ini adalah satu set robot atau sistem automasi yang tolong buat kerja-kerja 'leceh' di media sosial secara automatik. Ia merangkumi alat untuk TikTok, Instagram, Threads, dan WhatsApp Marketing.
+       </div>
+      </div><!-- FAQ 2 -->
+      <div class="faq-item p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300"><button class="faq-question w-full flex items-start justify-between gap-4 text-left" onclick="this.parentElement.classList.toggle('active')"> <span class="text-lg font-bold text-white flex-1">2. Betul ke kena guna PC/Laptop sahaja? Phone tak boleh?</span>
+        <svg class="faq-icon w-6 h-6 text-amber-400 flex-shrink-0 transform transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg></button>
+       <div class="faq-answer mt-4 text-slate-300 hidden">
+        Betul, buat masa ini sistem ini hanya menyokong penggunaan PC atau Laptop sahaja supaya ia dapat berjalan dengan lebih stabil dan berkesan.
+       </div>
+      </div><!-- FAQ 3 -->
+      <div class="faq-item p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300"><button class="faq-question w-full flex items-start justify-between gap-4 text-left" onclick="this.parentElement.classList.toggle('active')"> <span class="text-lg font-bold text-white flex-1">3. Saya ni 'buta IT', boleh ke saya guna?</span>
+        <svg class="faq-icon w-6 h-6 text-amber-400 flex-shrink-0 transform transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg></button>
+       <div class="faq-answer mt-4 text-slate-300 hidden">
+        Jangan risau! Kami dah sediakan video tutorial lengkap dari langkah A sampai Z. Kalau anda tahu cara guna Chrome, anda pasti boleh guna RK PRO.
+       </div>
+      </div><!-- FAQ 4 -->
+      <div class="faq-item p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300"><button class="faq-question w-full flex items-start justify-between gap-4 text-left" onclick="this.parentElement.classList.toggle('active')"> <span class="text-lg font-bold text-white flex-1">4. Selamat ke akaun saya kalau guna robot ni?</span>
+        <svg class="faq-icon w-6 h-6 text-amber-400 flex-shrink-0 transform transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg></button>
+       <div class="faq-answer mt-4 text-slate-300 hidden">
+        Sistem kami direka untuk bertindak secara organik dan menjaga ratio follower/following yang profesional. Namun, anda dinasihatkan supaya mengikut 'speed' yang kami sarankan supaya akaun kekal sihat.
+       </div>
+      </div><!-- FAQ 5 -->
+      <div class="faq-item p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300"><button class="faq-question w-full flex items-start justify-between gap-4 text-left" onclick="this.parentElement.classList.toggle('active')"> <span class="text-lg font-bold text-white flex-1">5. Apa fungsi 'Auto Extract' tu sebenarnya?</span>
+        <svg class="faq-icon w-6 h-6 text-amber-400 flex-shrink-0 transform transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg></button>
+       <div class="faq-answer mt-4 text-slate-300 hidden">
+        Ia adalah fungsi 'sedut' database. Contohnya, anda boleh ambil data pengikut pesaing atau orang yang komen di video viral dan jadikan mereka target prospek anda.
+       </div>
+      </div><!-- FAQ 6 -->
+      <div class="faq-item p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300"><button class="faq-question w-full flex items-start justify-between gap-4 text-left" onclick="this.parentElement.classList.toggle('active')"> <span class="text-lg font-bold text-white flex-1">6. WhatsApp Pro tu boleh hantar mesej pukal ke?</span>
+        <svg class="faq-icon w-6 h-6 text-amber-400 flex-shrink-0 transform transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg></button>
+       <div class="faq-answer mt-4 text-slate-300 hidden">
+        Ya, betul! Anda boleh gunakan fungsi Auto Send untuk 'blast' mesej promosi terus ke inbox prospek secara pukal tanpa perlu taip satu-satu.
+       </div>
+      </div><!-- FAQ 7 -->
+      <div class="faq-item p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300"><button class="faq-question w-full flex items-start justify-between gap-4 text-left" onclick="this.parentElement.classList.toggle('active')"> <span class="text-lg font-bold text-white flex-1">7. Betul ke boleh jimat kos upah admin?</span>
+        <svg class="faq-icon w-6 h-6 text-amber-400 flex-shrink-0 transform transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg></button>
+       <div class="faq-answer mt-4 text-slate-300 hidden">
+        Sangat betul. Ada pengguna kami yang dah tak perlu upah admin RM1,200 sebulan sebab robot ini dah buat kerja rutin harian mereka secara automatik.
+       </div>
+      </div><!-- FAQ 8 -->
+      <div class="faq-item p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300"><button class="faq-question w-full flex items-start justify-between gap-4 text-left" onclick="this.parentElement.classList.toggle('active')"> <span class="text-lg font-bold text-white flex-1">8. Ada orang ajar ke kalau saya 'stuck' atau ada masalah?</span>
+        <svg class="faq-icon w-6 h-6 text-amber-400 flex-shrink-0 transform transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg></button>
+       <div class="faq-answer mt-4 text-slate-300 hidden">
+        Mesti ada! Anda akan dimasukkan ke dalam Group Support Eksklusif untuk bertanya soalan. Admin juga ada buat Sesi Live berkala untuk tunjuk cara guna yang paling mantap.
+       </div>
+      </div><!-- FAQ 9 -->
+      <div class="faq-item p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300"><button class="faq-question w-full flex items-start justify-between gap-4 text-left" onclick="this.parentElement.classList.toggle('active')"> <span class="text-lg font-bold text-white flex-1">9. RK TR Pro tu untuk apa eh?</span>
+        <svg class="faq-icon w-6 h-6 text-amber-400 flex-shrink-0 transform transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg></button>
+       <div class="faq-answer mt-4 text-slate-300 hidden">
+        Itu khas untuk platform Threads. Walaupun platform itu baru, robot kami boleh tolong anda bina komuniti dengan pantas melalui fungsi auto follow dan extract.
+       </div>
+      </div><!-- FAQ 10 -->
+      <div class="faq-item p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300"><button class="faq-question w-full flex items-start justify-between gap-4 text-left" onclick="this.parentElement.classList.toggle('active')"> <span class="text-lg font-bold text-white flex-1">10. Macam mana nak dapatkan Free Trial?</span>
+        <svg class="faq-icon w-6 h-6 text-amber-400 flex-shrink-0 transform transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg></button>
+       <div class="faq-answer mt-4 text-slate-300 hidden">
+        Senang sahaja! Anda boleh terus isi FORM di bahagian bawah laman web untuk mencuba sendiri kehebatan sistem kami.
+       </div>
+      </div><!-- FAQ 11 -->
+      <div class="faq-item p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300"><button class="faq-question w-full flex items-start justify-between gap-4 text-left" onclick="this.parentElement.classList.toggle('active')"> <span class="text-lg font-bold text-white flex-1">11. Kalau media sosial ada update, robot ni rosak tak?</span>
+        <svg class="faq-icon w-6 h-6 text-amber-400 flex-shrink-0 transform transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg></button>
+       <div class="faq-answer mt-4 text-slate-300 hidden">
+        Pihak admin akan sentiasa memantau dan mengemaskini sistem sekiranya terdapat sebarang perubahan teknikal pada platform media sosial berkaitan.
+       </div>
+      </div><!-- FAQ 12 -->
+      <div class="faq-item p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300"><button class="faq-question w-full flex items-start justify-between gap-4 text-left" onclick="this.parentElement.classList.toggle('active')"> <span class="text-lg font-bold text-white flex-1">12. Boleh ke saya guna untuk banyak akaun media sosial?</span>
+        <svg class="faq-icon w-6 h-6 text-amber-400 flex-shrink-0 transform transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg></button>
+       <div class="faq-answer mt-4 text-slate-300 hidden">
+        Boleh! Robot ini membantu anda menguruskan berbilang akaun dan platform (TikTok, IG, Threads, WA) secara serentak supaya anda boleh fokus pada closing sale sahaja.
+       </div>
+      </div><!-- FAQ 13 -->
+      <div class="faq-item p-6 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-amber-500/50 transition-all duration-300"><button class="faq-question w-full flex items-start justify-between gap-4 text-left" onclick="this.parentElement.classList.toggle('active')"> <span class="text-lg font-bold text-white flex-1">13. Saya tengah guna VPS, boleh ke install RK PRO?</span>
+        <svg class="faq-icon w-6 h-6 text-amber-400 flex-shrink-0 transform transition-transform duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg></button>
+       <div class="faq-answer mt-4 text-slate-300 hidden">
+        Boleh sangat! Malah penggunaan VPS (seperti Windows Server) sangat digalakkan jika anda mahu robot ini berjalan 24 jam tanpa henti walaupun PC anda ditutup.
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- CTA Section -->
+   <section class="py-20 px-4 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-t from-amber-500/10 to-transparent"></div>
+    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-t from-amber-500/20 to-transparent rounded-full blur-3xl"></div>
+    <div class="max-w-5xl mx-auto relative z-10"><!-- Money Back Guarantee Section - Complete -->
+     <div class="mb-16">
+      <div class="text-center mb-12">
+       <div class="inline-block px-6 py-3 bg-green-500/20 border-2 border-green-500/50 rounded-full mb-6"><span class="text-green-300 font-black text-xl">🛡️ JAMINAN PULANGAN WANG 100%</span>
+       </div>
+       <h2 class="text-3xl md:text-5xl font-black text-white mb-4">"Tak Menjadi, Kami Pulangkan <span class="text-green-400">Duit Anda!</span>"</h2>
+       <p class="text-xl text-slate-300 max-w-3xl mx-auto">Kami faham, mungkin anda pernah terkena dengan tool yang janji bulan bintang tapi akhirnya hampeh. Kami pegang prinsip <span class="font-bold text-green-400">Rakan Kongsi</span>—kami hanya nak anda bayar jika sistem ini betul-betul membantu bisnes anda.</p>
+      </div><!-- Why We Dare -->
+      <div class="mb-12 p-8 bg-slate-900/50 border border-slate-700 rounded-3xl">
+       <h3 class="text-2xl md:text-3xl font-black text-white mb-6 text-center">Kenapa Kami Berani Beri Jaminan?</h3>
+       <p class="text-lg text-slate-300 text-center max-w-3xl mx-auto">Kami sangat yakin dengan <span class="font-bold text-amber-400">Ekosistem RK PRO</span> (RK TT Pro, RK IG Pro, RK TR Pro, dan RK WS Pro) kerana <span class="font-bold text-green-400">kami sendiri gunakannya</span> untuk uruskan bisnes kami setiap hari.</p>
+      </div><!-- Conditions -->
+      <div class="mb-12">
+       <h3 class="text-2xl font-black text-white mb-6 text-center">Jika dalam masa <span class="text-green-400">7 Hari</span> anda dapati:</h3>
+       <div class="grid md:grid-cols-2 gap-6 mb-12">
+        <div class="p-6 bg-red-900/20 border-2 border-red-500/40 rounded-2xl">
+         <div class="flex items-start gap-4">
+          <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-red-500/20 rounded-xl text-2xl">
+           ❌
+          </div>
+          <div>
+           <h4 class="text-lg font-bold text-white mb-2">Sistem Tak Berfungsi</h4>
+           <p class="text-slate-300">Sistem langsung tidak berfungsi seperti yang dijanjikan walaupun anda dah ikut <span class="font-semibold text-blue-300">Video Tutorial</span> yang disediakan.</p>
+          </div>
+         </div>
+        </div>
+        <div class="p-6 bg-red-900/20 border-2 border-red-500/40 rounded-2xl">
+         <div class="flex items-start gap-4">
+          <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-red-500/20 rounded-xl text-2xl">
+           ⚠️
+          </div>
+          <div>
+           <h4 class="text-lg font-bold text-white mb-2">Support Gagal Selesaikan</h4>
+           <p class="text-slate-300">Anda dah minta bantuan dalam <span class="font-semibold text-blue-300">Group Support Eksklusif</span> tapi masalah teknikal anda masih gagal diselesaikan oleh admin.</p>
+          </div>
+         </div>
+        </div>
+       </div><!-- Guarantee Promise -->
+       <div class="p-8 bg-gradient-to-br from-green-500/20 to-emerald-500/20 border-3 border-green-500/50 rounded-3xl text-center mb-8">
+        <div class="text-6xl mb-4">
+         💰
+        </div>
+        <h3 class="text-3xl md:text-4xl font-black text-white mb-4">Kami Akan Pulangkan Wang Anda <span class="text-green-400">100%!</span></h3>
+        <p class="text-xl text-slate-300 mb-2">Tiada soalan pelik-pelik, tiada sembunyi-sembunyi.</p>
+        <p class="text-lg text-green-300 font-semibold">Matlamat kami adalah untuk melihat anda berjaya automasikan bisnes, bukan sekadar nak ambil duit anda.</p>
+       </div><!-- Important Note -->
+       <div class="p-6 bg-amber-500/10 border-2 border-amber-500/40 rounded-2xl">
+        <div class="flex items-start gap-4">
+         <div class="flex-shrink-0 text-3xl">
+          ⚡
+         </div>
+         <div>
+          <h4 class="text-lg font-bold text-amber-300 mb-2">Nota Penting:</h4>
+          <p class="text-slate-300">Jaminan ini tertuju kepada <span class="font-bold text-white">masalah teknikal sistem</span>. Pastikan anda menggunakan <span class="font-bold text-amber-400">PC atau Laptop</span> kerana sistem ini tidak menyokong penggunaan telefon pintar.</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- CTA Content -->
+     <div class="text-center max-w-4xl mx-auto">
+      <div class="mb-8">
+       <h3 class="text-3xl sm:text-4xl md:text-5xl font-black text-red-400 mb-6">Nanti dulu!!! Jangan beli dulu...</h3>
+      </div>
+      <p class="text-base sm:text-lg md:text-xl text-slate-300 mb-6 sm:mb-8 px-4">Jangan tunggu pesaing anda gunakan sistem ini dulu.<br class="hidden sm:block"><span class="text-amber-400 font-semibold">Automasi adalah kunci untuk buat kerja lebih smart, bukan lebih hard.</span></p>
+      <div class="mb-8 sm:mb-10">
+       <h3 class="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3">Dapatkan Akses RK PRO Sekarang!</h3>
+       <p class="text-lg sm:text-2xl md:text-3xl font-bold mb-6"><span class="text-green-400">SECARA PERCUMA</span> <span class="text-slate-400">(TRIAL)</span></p><!-- Animated Yellow Arrows -->
+       <div class="flex justify-center items-center gap-2 sm:gap-4">
+        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-yellow-400 animate-bounce" style="animation-delay: 0s;" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-yellow-400 animate-bounce" style="animation-delay: 0.1s;" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-yellow-400 animate-bounce" style="animation-delay: 0.2s;" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+  <script>
+    const defaultConfig = {
+      main_headline: "Relaks Je, Robot Kan Ada",
+      subheadline: "Automasi sosmed paling senang. Klik-klik, siap!",
+      cta_button_text: "Dapatkan Akses Sekarang",
+      background_color: "#020617",
+      surface_color: "#0f172a",
+      text_color: "#e2e8f0",
+      primary_action_color: "#f59e0b",
+      secondary_action_color: "#6366f1",
+      font_family: "Plus Jakarta Sans",
+      font_size: 16
+    };
+
+    let config = { ...defaultConfig };
+
+    async function onConfigChange(cfg) {
+      config = { ...defaultConfig, ...cfg };
+      
+      // Update text content
+      const mainHeadline = document.getElementById('main-headline');
+      if (mainHeadline) {
+        mainHeadline.innerHTML = config.main_headline.includes("Robot Kan Ada") 
+          ? config.main_headline.replace("Robot Kan Ada", "<span class='gradient-text'>Robot Kan Ada</span>")
+          : config.main_headline;
+      }
+      
+      const subheadline = document.getElementById('subheadline');
+      if (subheadline) {
+        subheadline.textContent = config.subheadline;
+      }
+      
+      const ctaButton = document.getElementById('cta-button');
+      if (ctaButton) {
+        ctaButton.querySelector('span').textContent = config.cta_button_text;
+      }
+      
+      const finalCtaButton = document.getElementById('final-cta-button');
+      if (finalCtaButton) {
+        finalCtaButton.querySelector('span').textContent = '🚀 ' + config.cta_button_text.toUpperCase();
+      }
+      
+      // Update colors
+      const wrapper = document.getElementById('app-wrapper');
+      if (wrapper) {
+        wrapper.style.backgroundColor = config.background_color;
+      }
+      
+      // Update font
+      document.body.style.fontFamily = `${config.font_family}, sans-serif`;
+    }
+
+    // Since we are running outside the specific SDK environment, just call default config init
+    onConfigChange(defaultConfig);
+    
+    // Show popup after 3 seconds
+    setTimeout(() => {
+      const popup = document.getElementById('announcement-popup');
+      if (popup) {
+        popup.classList.remove('hidden');
+      }
+    }, 3000);
+  </script>
+ </body>
+</html>
